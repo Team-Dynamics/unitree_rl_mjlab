@@ -168,3 +168,29 @@ def unitree_a2_flat_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
     twist_cmd.ranges.ang_vel_z = (-0.5, 0.5)
 
   return cfg
+
+
+def unitree_a2_transfer_rough_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
+  """Create rough terrain config with flat-compatible observations.
+
+  This allows running flat-trained checkpoints (which expect smaller observation
+  vectors without terrain height scans) on rough terrain for transfer testing.
+  """
+  cfg = unitree_a2_rough_env_cfg(play=play)
+
+  # Keep rough terrain, but remove terrain scan observation terms to match
+  # flat checkpoint observation dimensions.
+  cfg.scene.sensors = tuple(
+    s for s in (cfg.scene.sensors or ()) if s.name != "terrain_scan"
+  )
+  del cfg.observations["actor"].terms["height_scan"]
+  del cfg.observations["critic"].terms["height_scan"]
+
+  if play:
+    twist_cmd = cfg.commands["twist"]
+    assert isinstance(twist_cmd, UniformVelocityCommandCfg)
+    twist_cmd.ranges.lin_vel_x = (-0.5, 1.0)
+    twist_cmd.ranges.lin_vel_y = (-0.5, 0.5)
+    twist_cmd.ranges.ang_vel_z = (-0.5, 0.5)
+
+  return cfg

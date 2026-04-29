@@ -1,0 +1,1 @@
+Run A2 model train on flat ground in rough: python unitree_rl_mjlab/scripts/play.py Unitree-A2-Transfer-Rough   --checkpoint_file ~/unitree_rl_mjlab/logs/rsl_rl/a2_velocity/2026-03-26_10-32-41/model_1000.pt   --viewer viser
