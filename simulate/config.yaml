@@ -10,7 +10,8 @@ robot: "a2"
 
 #robot_scene: "src/assets/robots/unitree_a2/xmls/scene_a2.xml"
 #robot_scene: "src/assets/robots/unitree_a2/xmls/scene_a2_uneven.xml"
-robot_scene: "src/assets/robots/unitree_a2/xmls/a2arena.xml"
+robot_scene: "src/assets/robots/unitree_a2/unitreerobotics unitree_mujoco main unitree_robots-a2/qrc_map_flat.xml"
+
 
 domain_id: 0  # Domain id
 interface: "enp5s0" # Interface
