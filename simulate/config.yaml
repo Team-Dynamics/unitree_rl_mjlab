@@ -8,8 +8,9 @@
 #robot_scene: "src/assets/robots/unitree_go2/xmls/scene_go2.xml"
 robot: "a2"
 
-robot_scene: "src/assets/robots/unitree_a2/xmls/scene_a2.xml"
+#robot_scene: "src/assets/robots/unitree_a2/xmls/scene_a2.xml"
 #robot_scene: "src/assets/robots/unitree_a2/xmls/scene_a2_uneven.xml"
+robot_scene: "src/assets/robots/unitree_a2/xmls/a2arena.xml"
 
 domain_id: 0  # Domain id
 interface: "lo" # Interface
