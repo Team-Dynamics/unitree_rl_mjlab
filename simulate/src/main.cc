@@ -594,10 +594,11 @@ void *UnitreeSdk2BridgeThread(void *arg)
   param::config.band_attached_link = 6 * body_id;
   
   std::unique_ptr<UnitreeSDK2BridgeBase> interface = nullptr;
-  if (m->nu > NUM_MOTOR_IDL_GO) {
-    interface = std::make_unique<G1Bridge>(m, d);
-  } else {
+  if (param::config.robot == "go2") {
     interface = std::make_unique<Go2Bridge>(m, d);
+  } else {
+    // A2, G1, G1-23dof, H1_2, and R1 all use the G1 DDS message family here.
+    interface = std::make_unique<G1Bridge>(m, d);
   }
   interface->start();
   

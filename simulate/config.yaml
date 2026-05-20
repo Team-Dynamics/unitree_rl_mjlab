@@ -13,7 +13,7 @@ robot: "a2"
 robot_scene: "src/assets/robots/unitree_a2/xmls/a2arena.xml"
 
 domain_id: 0  # Domain id
-interface: "lo" # Interface
+interface: "enp5s0" # Interface
 
 use_joystick: 1 # Simulate Unitree WirelessController using a gamepad
 joystick_type: "xbox" # support "xbox" and "switch" gamepad layout
